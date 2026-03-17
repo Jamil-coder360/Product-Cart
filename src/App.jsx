@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import HomePage from './pages/HomePage';
-import ProductList from './Components/ProductList';
 import Cart from './Components/Cart';
-import SingleProductpage from './pages/SingleProductpage';
+import SingleProductPage from '../pages/SingleProductPage';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:id",
-    element:<SingleProductpage />,
+    element:<SingleProductPage />,
   },
   {
     path: "/cart",
