@@ -27,7 +27,7 @@ const Navber = () => {
       link: "/pages",
     },
     {
-      id: 3,
+      id: 5,
       text: "BLOG",
       link: "/blog",
     },
@@ -47,9 +47,9 @@ const Navber = () => {
         </Link>
         <div
           id="collapseMenu"
-          className="w-full max-lg:hidden lg:!block max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50"
+          className="w-full"
         >
-          <div className="lg:flex max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+          {/* <div className="lg:flex max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50"> */}
             <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
               {menuItem?.map((items) => (
                 <li
@@ -65,7 +65,7 @@ const Navber = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          {/* </div> */}
         </div>
         <Link to="/cart">
           <div className="flex ml-auto">

@@ -18,7 +18,7 @@ const Cart = () => {
 
       {cartItems.length === 0 && <p>Your cart is empty</p>}
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
       {cartItems.map((product) => (
 
             <Product key={product.id} product={product} additem={additem} />
