@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import HomePage from './pages/HomePage';
 import Cart from './Components/Cart';
-import SingleProductPage from '../pages/SingleProductPage';
+import SingleProductPage from './pages/SingleProductPage';
 
 const router = createBrowserRouter([
   {
