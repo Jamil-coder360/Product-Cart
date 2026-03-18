@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
-
-const Navber = () => {
+import menu from "../assets/hemberger.png";
+import { X } from "lucide-react";
+function Navber() {
   const cart = useSelector((state) => state.cart);
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  function handleMenuOPen() {
+    setMenuOpen(!menuOpen);
+  }
   const menuItem = [
     {
       id: 1,
@@ -41,32 +45,32 @@ const Navber = () => {
           Summer Sale: Save up to 40% on select items. Limited-time offer!
         </p>
       </section>
-      <div className="flex items-center gap-4 px-10 py-3 relative bg-white min-h-[65px]">
+      <div className="flex items-center justify-between gap-4 px-10 py-3 relative bg-white min-h-[65px]">
         <Link to="">
           <img src="../logo.png" alt="logo" className="w-36 h-20" />
         </Link>
-        <div
-          id="collapseMenu"
-          className="w-full"
-        >
+
+        {/* desktop mode */}
+        <div id="collapseMenu" className="w-full hidden lg:block ">
           {/* <div className="lg:flex max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50"> */}
-            <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
-              {menuItem?.map((items) => (
-                <li
-                  key={items.id}
-                  className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"
+          <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
+            {menuItem?.map((items) => (
+              <li
+                key={items.id}
+                className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"
+              >
+                <Link
+                  to={items.link}
+                  className="hover:text-blue-700 font-medium text-blue-700 block text-[15px]"
                 >
-                  <Link
-                    to={items.link}
-                    className="hover:text-blue-700 font-medium text-blue-700 block text-[15px]"
-                  >
-                    {items.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  {items.text}
+                </Link>
+              </li>
+            ))}
+          </ul>
           {/* </div> */}
         </div>
+        {/* desktop mode close */}
         <Link to="/cart">
           <div className="flex ml-auto">
             <button className="size-5 cursor-pointer relative">
@@ -77,9 +81,39 @@ const Navber = () => {
             </button>
           </div>
         </Link>
+
+        <div className="flex lg:hidden" onClick={handleMenuOPen}>
+          {menuOpen ? (
+            <X className="text-red-500" />
+          ) : (
+            <img src={menu} alt="menuber" />
+          )}
+        </div>
       </div>
+      {/* MObile mode */}
+      {menuOpen && (
+        <div className="block lg:hi">
+          <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
+            {menuItem?.map((items) => (
+              <li
+                key={items.id}
+                className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"
+              >
+                <Link
+                  to={items.link}
+                  className="hover:text-blue-700 font-medium text-blue-700 block text-[15px]"
+                >
+                  {items.text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* mobile mode close */}
     </header>
   );
-};
+}
 
 export default Navber;
