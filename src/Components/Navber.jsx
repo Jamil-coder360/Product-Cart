@@ -46,6 +46,14 @@ function Navber() {
         </p>
       </section>
       <div className="flex items-center justify-between gap-4 px-10 py-3 relative bg-white min-h-[65px]">
+        <div className="flex lg:hidden" onClick={handleMenuOPen}>
+          {menuOpen ? (
+            <X className="text-red-500 size-10" />
+          ) : (
+            <img src={menu} alt="menuber" />
+          )}
+        </div>
+
         <Link to="">
           <img src="../logo.png" alt="logo" className="w-36 h-20" />
         </Link>
@@ -69,6 +77,9 @@ function Navber() {
             ))}
           </ul>
           {/* </div> */}
+        </div>
+        {/* desktop mode close */}
+        {/* cart icon link */}
         <Link to="/cart">
           <div className="flex ml-auto">
             <button className="size-5 cursor-pointer relative">
@@ -79,46 +90,28 @@ function Navber() {
             </button>
           </div>
         </Link>
-        </div>
-        {/* desktop mode close */}
-
-        <div className="flex lg:hidden" onClick={handleMenuOPen}>
-          {menuOpen ? (
-            <X className="text-red-500" />
-          ) : (
-            <img src={menu} alt="menuber" />
-          )}
-        </div>
       </div>
       {/* MObile mode */}
-      {menuOpen && (<div className="block lg:hidden absolute left-0 top-[140px] bg-white w-[300px] rounded-2xl z-50">
-          <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
-            {menuItem?.map((items) => (
-              <li
-                key={items.id}
-                className="max-lg:border-b max-lg:border-gray-300 max-lg:py-3"
-              >
-                <Link
-                  to={items.link}
-                  className="hover:text-blue-700 font-medium text-red-500 block text-[15px]"
-                >
-                  {items.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link to="/cart">
-          <div className="flex ml-auto absolute top-0 right-0">
-            <button className="size-5 cursor-pointer relative">
-              <img src="./cart.png" alt="Cart" />
-              <span className="text-blue-400 text-sm absolute top-[-20px] left-0 rounded-3xl p-1">
-                {cart.length}
-              </span>
-            </button>
-          </div>
+     <div
+  className={`lg:hidden absolute top-[140px] left-0 w-[300px] bg-white rounded-2xl z-50 transform transition-all duration-300 ease-in-out 
+  ${menuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0 pointer-events-none"}`}
+>
+  <ul className="space-y-2 p-4">
+    {menuItem?.map((items) => (
+      <li
+        key={items.id}
+        className="border-b border-gray-300 py-3"
+      >
+        <Link
+          to={items.link}
+          className="hover:text-blue-700 font-medium text-red-500 block text-[15px]"
+        >
+          {items.text}
         </Link>
-        </div>
-      )}
+      </li>
+    ))}
+  </ul>
+</div>
 
       {/* mobile mode close */}
     </header>
