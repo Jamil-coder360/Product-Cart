@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import menu from "../assets/hemberger.png";
-import { X } from "lucide-react";
+import { Divide, X } from "lucide-react";
 function Navber() {
   const cart = useSelector((state) => state.cart);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,8 +69,6 @@ function Navber() {
             ))}
           </ul>
           {/* </div> */}
-        </div>
-        {/* desktop mode close */}
         <Link to="/cart">
           <div className="flex ml-auto">
             <button className="size-5 cursor-pointer relative">
@@ -81,6 +79,8 @@ function Navber() {
             </button>
           </div>
         </Link>
+        </div>
+        {/* desktop mode close */}
 
         <div className="flex lg:hidden" onClick={handleMenuOPen}>
           {menuOpen ? (
@@ -91,8 +91,7 @@ function Navber() {
         </div>
       </div>
       {/* MObile mode */}
-      {menuOpen && (
-        <div className="block lg:hi">
+      {menuOpen && (<div className="block lg:hidden absolute left-0 top-[140px] bg-white w-[300px] rounded-2xl z-50">
           <ul className="lg:flex lg:gap-x-8 max-lg:space-y-2">
             {menuItem?.map((items) => (
               <li
@@ -101,13 +100,23 @@ function Navber() {
               >
                 <Link
                   to={items.link}
-                  className="hover:text-blue-700 font-medium text-blue-700 block text-[15px]"
+                  className="hover:text-blue-700 font-medium text-red-500 block text-[15px]"
                 >
                   {items.text}
                 </Link>
               </li>
             ))}
           </ul>
+          <Link to="/cart">
+          <div className="flex ml-auto absolute top-0 right-0">
+            <button className="size-5 cursor-pointer relative">
+              <img src="./cart.png" alt="Cart" />
+              <span className="text-blue-400 text-sm absolute top-[-20px] left-0 rounded-3xl p-1">
+                {cart.length}
+              </span>
+            </button>
+          </div>
+        </Link>
         </div>
       )}
 
