@@ -40,7 +40,7 @@ function Navber() {
 
   return (
     <header className=" border-b border-gray-300 tracking-wide relative z-50">
-      <section className="py-3 bg-[#1d294f] text-white text-center px-10">
+      <section className="py-3 bg-[#1d294f] text-white text-center">
         <p className="text-sm">
           Summer Sale: Save up to 40% on select items. Limited-time offer!
         </p>

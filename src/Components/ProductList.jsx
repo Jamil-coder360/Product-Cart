@@ -18,7 +18,7 @@ const ProductList = () => {
   };
   return (
     <div className="p-4 mx-auto lg:max-w-screen-xl">
-      <div className="border-b border-gray-300 pb-4">
+      <div className="border-b border-gray-300 pb-4 text-center">
         <h2 className="text-slate-900 text-2xl font-bold">Hot list</h2>
         <p className="text-slate-600 mt-2">
           Out the most popular and trending products.
