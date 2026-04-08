@@ -1,8 +1,9 @@
 import React, { use } from 'react'
-import { Link } from 'react-router';
+import { Link, useNavigation } from 'react-router';
 import { useDispatch } from "react-redux";
 
 const Product = ({product,additem}) => {
+
   const dispatch = useDispatch();
   const {thumbnail, description, price,discountPercentage}=product;
   return (
