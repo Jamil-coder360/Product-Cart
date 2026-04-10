@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router";
 import menu from "../assets/hemberger.png";
 import { Divide, X } from "lucide-react";
+// import { cart } from "../features/card/cartSlice";
 function Navber() {
-  const cart = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart?.cart || []);
   const [menuOpen, setMenuOpen] = useState(false);
   function handleMenuOPen() {
     setMenuOpen(!menuOpen);
@@ -36,7 +37,7 @@ function Navber() {
       link: "/blog",
     },
   ];
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <header className=" border-b border-gray-300 tracking-wide relative z-50">
@@ -85,7 +86,7 @@ function Navber() {
             <button className="size-10 cursor-pointer relative">
               <img src="./cart.png" alt="Cart" />
               <span className="text-blue-400 text-sm absolute top-[-20px] left-0 rounded-3xl p-1 bg-amber-500/30 p-2">
-                {cart.length}
+               {cartItems?.length}
               </span>
             </button>
           </div>

@@ -1,39 +1,44 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
-import Product from "./Product";
-import {addToCart} from "../features/card/cartSlice";
-const Cart = () => {
-  
-  const dispatch = useDispatch();
-  
-  const additem = (product) => {
-    dispatch(addToCart(product));
-  };
+import { toast } from "react-toastify";
+import { addToCart, removeFromCart } from "../features/card/cartSlice";
 
-  const cartItems = useSelector((state) => state.cart);
+const Cart = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cart) || [];
+
+  const removeitem = (product) => {
+    dispatch(removeFromCart(product.id));
+    toast.success("Product removed from cart 🗑️");
+  };
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Cart Items: {cartItems.length}</h2>
+      <h2 className="text-xl font-bold mb-4">
+        Cart Items: {cartItems.length}
+      </h2>
 
       {cartItems.length === 0 && <p>Your cart is empty</p>}
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-      {cartItems.map((product) => (
+        {cartItems.map((product) => (
+          <div key={product.id} className="border p-3 rounded">
+            <img src={product.thumbnail} className="w-full h-40 object-cover" />
 
-            <Product key={product.id} product={product} additem={additem} />
+            <h3 className="font-semibold">{product.description}</h3>
+
+            <p>${product.price}</p>
+
+            <button
+              onClick={() => removeitem(product)}
+              className="mt-2 bg-red-500 text-white px-3 py-1 rounded"
+            >
+              Remove
+            </button>
+          </div>
         ))}
-        </div>
+      </div>
     </div>
   );
 };
 
 export default Cart;
-{/* <div className="mt-4">
-  <Link
-    to="/shop"
-    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-  >
-    Continue Shopping
-  </Link>
-</div> */}

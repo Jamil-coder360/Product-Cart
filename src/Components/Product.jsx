@@ -2,7 +2,7 @@ import React, { use } from 'react'
 import { Link, useNavigation } from 'react-router';
 import { useDispatch } from "react-redux";
 
-const Product = ({product,additem}) => {
+const Product = ({product,additem,removeitem}) => {
 
   const dispatch = useDispatch();
   const {thumbnail, description, price,discountPercentage}=product;
@@ -33,7 +33,8 @@ const Product = ({product,additem}) => {
             <div className="h-[78px]">
               <div className="flex flex-col items-center w-full absolute left-0 right-0 px-2 bottom-3">
                 <button
-                  onClick={() => dispatch(additem(product))}
+                  // onClick={() => dispatch(additem(product))}
+                 onClick={() => additem(product)}
                   type="button"
                   className="flex items-center justify-center gap-2 px-2 py-2 cursor-pointer rounded-md text-white text-sm sm:text-[15px] font-medium whitespace-nowrap border-0 outline-0 w-full bg-purple-700 hover:bg-purple-800"
                 >
